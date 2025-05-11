@@ -1,9 +1,10 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  row-gap: 10px;
   padding: 0;
   justify-content: center;
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
 }
 
 .contactList {

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 300px;
+  list-style-type: none;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.text {
+  margin: 0;
+}
