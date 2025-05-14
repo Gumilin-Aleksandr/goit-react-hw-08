@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { logOut, logIn, register, refreshUser } from "./operations";
 
 const initialState = {
@@ -9,6 +9,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null,
 };
 
 const slice = createSlice({
@@ -46,7 +47,15 @@ const slice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
       })
-      .addCase(logOut.fulfilled, () => initialState);
+      .addCase(logOut.fulfilled, () => initialState)
+
+      .addMatcher(
+        isAnyOf(register.rejected, logIn.rejected, logOut.rejected),
+        (state, action) => {
+          state.loading = false;
+          state.error = true;
+        }
+      );
   },
 });
 

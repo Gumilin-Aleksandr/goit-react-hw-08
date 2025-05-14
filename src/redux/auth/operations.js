@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const goitAPI = axios.create({
   baseURL: "https://connections-api.goit.global",
@@ -23,7 +24,13 @@ export const register = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.massage);
+      const message =
+        error.response?.status === 400
+          ? "User with this email is already registered"
+          : error.response?.data?.message || error.message;
+
+      toast.error(message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );
@@ -36,6 +43,12 @@ export const logIn = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
+      const message =
+        error.response?.status === 400
+          ? "Invalid username or password"
+          : error.response?.data?.message || error.message;
+
+      toast.error(message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -47,6 +60,7 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     clearAuthHeader();
     return response.data;
   } catch (error) {
+    toast.error("Oops...try again!");
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -65,6 +79,7 @@ export const refreshUser = createAsyncThunk(
       const response = await goitAPI.get("/users/current");
       return response.data;
     } catch (error) {
+      toast.error("Oops...try again!");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
