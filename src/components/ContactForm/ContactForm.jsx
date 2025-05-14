@@ -28,27 +28,53 @@ function ContactForm() {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
-    >
-      <Form className={s.container}>
-        <div className={s.group}>
-          <label htmlFor="name">Name</label>
-          <Field className={s.field} type="text" name="name" />
-          <ErrorMessage name="name" component="span" className={s.error} />
-        </div>
-        <div className={s.group}>
-          <label htmlFor="number">Number</label>
-          <Field className={s.field} type="number" name="number" />
-          <ErrorMessage name="number" component="span" className={s.error} />
-        </div>
-        <button className={s.button} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mt-5">
+      <div className="card-body">
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={FeedbackSchema}
+        >
+          <Form>
+            <fieldset className="fieldset text-1xl ">
+              <div className={s.group}>
+                <label className="label mb-2">Name</label>
+                <Field
+                  name="name"
+                  type="name"
+                  className="input w-full input-primary"
+                  placeholder="Name"
+                />
+                <ErrorMessage
+                  name="name"
+                  component="span"
+                  className={s.error}
+                />
+              </div>
+              <div className={s.group}>
+                <label className="label mb-2 mt-3">Number</label>
+                <Field
+                  name="number"
+                  type="number"
+                  className="input w-full input-primary"
+                  placeholder="Number"
+                />
+                <ErrorMessage
+                  name="number"
+                  component="span"
+                  className={s.error}
+                />
+              </div>
+              <div className="flex justify-center mt-5">
+                <button type="submit" className="btn btn-primary">
+                  Add Contact
+                </button>
+              </div>
+            </fieldset>
+          </Form>
+        </Formik>
+      </div>
+    </div>
   );
 }
 

@@ -1,14 +1,13 @@
-.container {
+/* .container {
   display: flex;
   flex-wrap: wrap;
   row-gap: 10px;
   padding: 0;
   justify-content: center;
-  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
 }
 
 .contactList {
   display: flex;
   border: 1px solid #2a2a2a;
   border-radius: 2px;
-}
+} */

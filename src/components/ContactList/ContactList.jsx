@@ -13,9 +13,12 @@ function ContactList() {
   const error = useSelector(selectError);
 
   return (
-    <ul className={s.container}>
+    <ul className=" ">
       {visibleContacts.map((contact) => (
-        <li className={s.contactList} key={contact.id}>
+        <li
+          className="card bg-white  w-full max-w-sm shadow-xl mb-2"
+          key={contact.id}
+        >
           <Contact contact={contact} />
         </li>
       ))}

@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -8,7 +8,6 @@
   align-items: center;
   font-size: 14px;
   padding-top: 10px;
-  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
 }
 
 .group {
@@ -40,4 +39,4 @@
   width: 100px;
   height: 30px;
   text-align: center;
-}
+} */

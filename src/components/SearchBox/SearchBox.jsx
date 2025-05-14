@@ -18,15 +18,23 @@ function SearchBox() {
   };
 
   return (
-    <form className={s.form}>
-      <label>Find contacts by name or number</label>
-      <input
-        type="text"
-        value={name || number}
-        onChange={handleFilter}
-        className={s.field}
-      />
-    </form>
+    <div className="card bg-base-100  w-65 max-w-sm shrink-0 shadow-2xl mt-5">
+      <div className="card-body">
+        <form>
+          <div className="fieldset text-1xl ">
+            <label className="label mb-2">
+              Find contacts by name or number
+            </label>
+            <input
+              type="text"
+              value={name || number}
+              onChange={handleFilter}
+              className="input w-full input-primary"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 
